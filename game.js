@@ -23,9 +23,26 @@ $(".btn").click(function() { //detects when any of the buttons are clicked
     var userChosenColour = $(this).attr("id"); //stores id of the button that was clicked
     userClickedPattern.push(userChosenColour); 
     playSound(userChosenColour); //plays corresponding sound of button
+    animatePress(userChosenColour);
+
+    checkAnswer(userClickedPattern.length-1);
 });
 
+function checkAnswer(currentLevel) {
+
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+        if (userClickedPattern.length === gamePattern.length){
+            setTimeout(function () {
+                nextSequence();
+            }, 1000); //moving to the next level after 1000ms delay
+        }
+
+    }
+}
+
 function nextSequence() {
+
+    userClickedPattern = []; //reset user's pattern array for the next level
 
     level++;
 
