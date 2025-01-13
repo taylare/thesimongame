@@ -37,6 +37,15 @@ function checkAnswer(currentLevel) {
             }, 1000); //moving to the next level after 1000ms delay
         }
 
+    } else {
+        playSound("wrong");
+
+        $("body").addClass("game-over");
+        setTimeout(function () {
+            $("body").removeClass("game-over");
+        }, 200);
+
+        $("#level-title").text("Game Over, Press Any Key to Restart");
     }
 }
 
